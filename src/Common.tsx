@@ -19,7 +19,11 @@ const Header = styled.div`
 
 export const color = {
   background: '#f6f7fa',
-  btnBackground: '#1b44f3'
+  btnBackground: '#1b44f3',
+  rateCard: '#ffffff',
+  analysisCard: '#1B44F3',
+  dot: '#161616',
+  fullScreen: '#E5E5E5',
 }
 
 export const component = {
