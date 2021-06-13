@@ -1,41 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import type { FC } from 'react'
+import styled from '@emotion/styled'
+import Feature from './Feature'
+import Charactor from './Charactor'
 
-interface AppProps {}
-
-function App({}: AppProps) {
+const App: FC = () => {
   // Create the count state.
-  const [count, setCount] = useState(0);
-  // Create the counter (+1 every second).
-  useEffect(() => {
-    const timer = setTimeout(() => setCount(count + 1), 1000);
-    return () => clearTimeout(timer);
-  }, [count, setCount]);
+
   // Return the App component.
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <p>
-          Page has been open for <code>{count}</code> seconds.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
-    </div>
+    <Main>
+      <Feature></Feature>
+      <Charactor></Charactor>
+    </Main>
   );
 }
+
+const Main = styled.div`
+  display: grid;
+  grid-template-columns: 38% 62%;
+  height: 100vh;
+`
 
 export default App;
