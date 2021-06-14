@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import type { FC } from 'react';
 import styled from '@emotion/styled';
-import { component, color } from './Common';
-import Pic00000 from './assets/00000.png';
+import { color } from './Common';
 import huihua1 from './assets/huihua/huihua1.png'
 import huihua2 from './assets/huihua/huihua2.png'
 import huihua3 from './assets/huihua/huihua3.png'
