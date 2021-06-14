@@ -14,10 +14,10 @@ const App: FC = () => {
     
     <>
       <Main>
-        <Feature></Feature>
+        <Feature setIndice={()=>{}}></Feature>
         <Charactor></Charactor>
       </Main>
-      <FrontPage></FrontPage>
+      {/* <FrontPage></FrontPage> */}
     </>
   );
 }
@@ -29,6 +29,7 @@ const Main = styled.div`
   grid-template-columns: 38% 62%;
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
 `
 
 export default App;
