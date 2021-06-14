@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect, MouseEventHandler } from 'react';
-import type { ReactNode, FC, MouseEvent } from 'react';
+import React, { useState} from 'react';
+import type { FC, MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { color } from './Common';
 import rightArrowPng from './assets/rightArrow.png';
@@ -23,6 +23,7 @@ const RateCard: FC<RateCardItems> = (props: RateCardItems) => {
   )
 }
 const RateCardLayout = styled.div`
+  top: -5vh;
   width: 45vw;
   padding-left: 5%;
   padding-top: 50px;
@@ -50,14 +51,15 @@ const RateCardItemLayout = styled.div`
   margin-bottom: 35px;
 `
 const RateCardItemText = styled.div`
+  display: flex;
+  align-items: center;
   position: relative;
   font-size: 2vmin;
 `
 const RateCardItemDot = styled.div`
   position: absolute;
-
   top: 50%;
-  transform: translateY(-100%);
+  transform: translateY(-50%);
   left: -20px;
   margin-right: 10px;
   width: 8px;
@@ -145,13 +147,9 @@ const AnalysisCardBlock = styled.div`
   border-radius: 24px;
 `
 
-const GoinButton: FC = () => {
-
-  const onTapGoin = () => {
-
-  }
+const GoinButton: FC<{setIsShow: () => void}> = ({setIsShow}) => {
   return (
-    <GoinButtonLayout onClick={onTapGoin}>
+    <GoinButtonLayout onClick={setIsShow}>
       进入
     </GoinButtonLayout>
   )
@@ -160,16 +158,13 @@ const GoinButtonLayout = styled.button`
   outline: none;
   border: none;
   margin: 0 auto;
-  margin-top: 50px;
-  width: 288px;
-  height: 82px;
+  width: 15vw;
+  height: 7.5vh;
   background-color: ${color.btnBackground};
-  
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-
   font-size: 24px;
   color: white;
   border-radius: 24px;
@@ -190,19 +185,19 @@ const Swipper: FC<SwipperProps> = (props: SwipperProps) => {
     <SwipperLayout curIndex={props.curIndex}>
       <CarouselDiv>
         <RateCard items={[{ text: "有计划在大学中培养一些艺术爱好吗", rate: 0.8893 }, { text: "现在有艺术方面的爱好或者特长吗", rate: 0.6886 }, { text: "有计划但现在没有艺术方面的爱好或者特长", rate: 0.2846 }]}></RateCard>
-        <AnalysisCard text={"依旧1/4的人没有迈出第一步"}></AnalysisCard>
+        <AnalysisCard text={"总是会有人连第一步都不会迈出"}></AnalysisCard>
       </CarouselDiv>
       <CarouselDiv>
         <RateCard items={[{ text: "拿到并一种乐器来探索会不知所措吗", rate: 0.4291 }]}></RateCard>
-        <AnalysisCard text={"探索欲降低和发自童心的冲动变小"}></AnalysisCard>
+        <AnalysisCard text={"有些人变得探索欲降低，发自重心的冲动减少"}></AnalysisCard>
       </CarouselDiv>
       <CarouselDiv>
         <RateCard items={[{ text: "拿到一张白纸有没有画画的想法", rate: 0.5882 }, { text: "是否幻想自己过艺术家的生活方式", rate: 0.4394 }]}></RateCard>
-        <AnalysisCard text={"固化生活中依旧有人保持美好向往"}></AnalysisCard>
+        <AnalysisCard text={"在固化的生活中依旧有人保持着美好向往"}></AnalysisCard>
       </CarouselDiv>
       <CarouselDiv>
         <RateCard items={[{ text: "是否愿意探索艺术活动", rate: 0.7232 }, { text: "渴望抽时间参与艺术活动吗", rate: 0.7958 }]}></RateCard>
-        <AnalysisCard text={"大多数人仍然对艺术生活有着热爱"}></AnalysisCard>
+        <AnalysisCard text={"人们总是依然对艺术生活热爱与向往"}></AnalysisCard>
       </CarouselDiv>
     </SwipperLayout>
   )
@@ -247,7 +242,7 @@ const RightArrowImage = styled.img`
   transform: translateY(-50%);
   right: 50px;
   z-index: 5;
-  width: 100px;
+  width: 30px;
 `
 const LeftArrowImage = styled.img`
   position: fixed;
@@ -255,12 +250,12 @@ const LeftArrowImage = styled.img`
   transform: translateY(-50%);
   left: 50px;
   z-index: 5;
-  width: 100px;
+  width: 30px;
 `
 
 const FrontPage: FC = () => {
-
   const [curIndex, setCurIndex] = useState(0);
+  const [isShow, setIsShow] = useState(true);
   const onTapRightArrow = () => {
     if (curIndex >= 3) {
       return;
@@ -274,18 +269,20 @@ const FrontPage: FC = () => {
     setCurIndex(curIndex - 1);
   }
   return (
-    <Main>
+    <Main isShow={isShow}>
       <RightArrow click={onTapRightArrow} curIndex={curIndex}></RightArrow>
       <LeftArrow click={onTapLeftArrow} curIndex={curIndex}></LeftArrow>
       <Swipper curIndex={curIndex}></Swipper>
-      <GoinButton />
+      <GoinButton setIsShow={() => setIsShow(false)}/>
     </Main>
   )
 }
 
-const Main = styled.div`
+const Main = styled.div<{isShow: boolean}>`
+  transform: ${({isShow}) => !isShow&&'translateX(-100%)'};
+  transition: 1s;
   background-color: #E5E5E5;
-  min-height: 100vh;
+  height: 100vh;
   z-index: 1;
   position: relative; 
   /* padding-top: 120px; */

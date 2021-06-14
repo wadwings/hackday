@@ -1,13 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import type {FC} from 'react';
 import styled from '@emotion/styled';
 import {component} from './Common'
 
-interface FeatureProps{
-  setIndice: () => void
-}
-
-const Feature : FC<FeatureProps> = () => {
+const Feature : FC = () => {
   const {Title, Header} = component;
   return (
     <Main>

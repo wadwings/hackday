@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { string } from 'prop-types';
 
 const Title = styled.div`
   font-size: 3.3vmin;

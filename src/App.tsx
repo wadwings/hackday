@@ -8,14 +8,17 @@ import FrontPage from './FrontPage'
 const App: FC = () => {
   // Create the count state.
   const [activeArr, setActiveArr] = useState<number[]>([]);
-
+  const onclick = () => {
+    activeArr.length && setActiveArr([]);
+  }
+  console.log(activeArr)
   // Return the App component.
   return (
     
     <>
-      <Main>
+      <Main onClick={onclick}>
         <Feature></Feature>
-        <Charactor></Charactor>
+        <Charactor activeArr={activeArr}></Charactor>
       </Main>
       <FrontPage></FrontPage>
     </>
