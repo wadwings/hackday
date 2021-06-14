@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect, MouseEventHandler } from 'react';
 import type { ReactNode, FC, MouseEvent } from 'react';
 import styled from '@emotion/styled';
@@ -16,7 +17,7 @@ const RateCard: FC<RateCardItems> = (props: RateCardItems) => {
   return (
     <RateCardLayout>
       {props.items.map((item) => {
-        return <RateCardItem text={item.text} rate={item.rate}></RateCardItem>
+        return <RateCardItem key={item.text} text={item.text} rate={item.rate}></RateCardItem>
       })}
     </RateCardLayout>
   )
@@ -147,7 +148,7 @@ const AnalysisCardBlock = styled.div`
 const GoinButton: FC = () => {
 
   const onTapGoin = () => {
-    
+
   }
   return (
     <GoinButtonLayout onClick={onTapGoin}>
@@ -212,7 +213,7 @@ const SwipperLayout = styled.div<{ curIndex: number }>`
   display: flex;
   flex-wrap: nowrap;
   background-color: #E5E5E5;
-  transform: translateX(${({curIndex})=>-100*curIndex+"vw"});
+  transform: translateX(${({ curIndex }) => -100 * curIndex + "vw"});
   transition: 1.5s;
 `
 
@@ -260,24 +261,24 @@ const LeftArrowImage = styled.img`
 const FrontPage: FC = () => {
 
   const [curIndex, setCurIndex] = useState(0);
-  const onTapRightArrow = (e: MouseEvent<HTMLDivElement>) => {
+  const onTapRightArrow = () => {
     if (curIndex >= 3) {
       return;
-    };
-    setCurIndex(curIndex+1);
+    }
+    setCurIndex(curIndex + 1);
   }
-  const onTapLeftArrow = (e: MouseEvent<HTMLDivElement>) => {
+  const onTapLeftArrow = () => {
     if (curIndex <= 0) {
       return;
-    };
-    setCurIndex(curIndex-1);
+    }
+    setCurIndex(curIndex - 1);
   }
   return (
     <Main>
       <RightArrow click={onTapRightArrow} curIndex={curIndex}></RightArrow>
       <LeftArrow click={onTapLeftArrow} curIndex={curIndex}></LeftArrow>
       <Swipper curIndex={curIndex}></Swipper>
-      <GoinButton/>
+      <GoinButton />
     </Main>
   )
 }
