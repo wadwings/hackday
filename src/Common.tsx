@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { string } from 'prop-types';
 
 const Title = styled.div`
   font-size: 3.3vmin;
@@ -16,6 +17,22 @@ const Header = styled.div`
   justify-content: space-between;
   padding: 0 8vh;
 `
+interface ResProps {
+  location: Array<number>
+  专业: number,
+  年级: number,
+  性别: number,
+  绘画: number,
+  艺术活动: number,
+  艺术生活: number,
+}
+interface globalDataProps { 
+  mapData: {dimension_data : Record<number, ResProps>}
+}
+
+export const globalData: globalDataProps = {
+  mapData: {dimension_data: {}}
+}
 
 export const color = {
   background: '#f6f7fa',

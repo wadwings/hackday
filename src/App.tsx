@@ -7,9 +7,11 @@ import FrontPage from './FrontPage'
 
 const App: FC = () => {
   // Create the count state.
+  const [activeArr, setActiveArr] = useState<number[]>([]);
 
   // Return the App component.
   return (
+    
     <>
       <Main>
         <Feature></Feature>
