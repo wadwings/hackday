@@ -17,7 +17,7 @@ const App: FC = () => {
     
     <>
       <Main onClick={onclick}>
-        <Feature></Feature>
+        <Feature setIndice={setActiveArr}></Feature>
         <Charactor activeArr={activeArr}></Charactor>
       </Main>
       <FrontPage></FrontPage>
@@ -32,6 +32,7 @@ const Main = styled.div`
   grid-template-columns: 38% 62%;
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
 `
 
 export default App;
