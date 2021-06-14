@@ -7,7 +7,7 @@ const Title = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: bold;
-`
+`;
 
 const Header = styled.div`
   height: 11vh;
@@ -15,23 +15,23 @@ const Header = styled.div`
   align-items: flex-end;
   justify-content: space-between;
   padding: 0 8vh;
-`
+`;
 interface ResProps {
-  location: Array<number>
-  专业: number,
-  年级: number,
-  性别: number,
-  绘画: number,
-  艺术活动: number,
-  艺术生活: number,
+  location: Array<number>;
+  专业: number;
+  年级: number;
+  性别: number;
+  绘画: number;
+  艺术活动: number;
+  艺术生活: number;
 }
-interface globalDataProps { 
-  mapData: {dimension_data : Record<number, ResProps>}
+interface globalDataProps {
+  mapData: { dimension_data: Record<number, ResProps> };
 }
 
 export const globalData: globalDataProps = {
-  mapData: {dimension_data: {}}
-}
+  mapData: { dimension_data: {} },
+};
 
 export const color = {
   background: '#f6f7fa',
@@ -40,9 +40,9 @@ export const color = {
   analysisCard: '#1B44F3',
   dot: '#161616',
   fullScreen: '#E5E5E5',
-}
+};
 
 export const component = {
   Title,
-  Header
-}
+  Header,
+};
